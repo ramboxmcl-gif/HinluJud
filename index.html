@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hinlu.Jud Systems | National Smart Infrastructure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --primary: #0f172a; 
+            --action: #ff6b35;  
+            --bg-light: #f8fafc; 
+            --text-dark: #1e293b; 
+            --success: #10b981;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+
+        /* HEADER & BRAND */
+        header { 
+            background: white; 
+            padding: 12px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); 
+            position: sticky; top: 0; z-index: 1000; 
+        }
+        .brand { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+        .logo-svg { width: 40px; height: 40px; }
+        .logo-text { font-size: 24px; font-weight: 800; color: var(--primary); letter-spacing: -1px; }
+        .logo-text span { color: var(--action); }
+
+        .nav-links { display: flex; gap: 5px; }
+        .nav-btn { background: none; border: none; font-size: 0.75rem; font-weight: 800; color: #64748b; cursor: pointer; padding: 10px 15px; border-radius: 8px; text-transform: uppercase; transition: 0.2s; }
+        .nav-btn.active { background: var(--primary); color: white; }
+
+        /* CONTENT SECTIONS */
+        .page-section { display: none; padding: 60px 5%; max-width: 1200px; margin: 0 auto; animation: fadeInUp 0.5s ease; }
+        .page-section.active { display: block; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .hero-title { font-size: 3rem; font-weight: 800; color: var(--primary); text-align: center; margin-bottom: 20px; line-height: 1.1; }
+        .hero-subtitle { text-align: center; color: #64748b; font-size: 1.2rem; max-width: 800px; margin: 0 auto 40px; }
+
+        /* GRID COMPONENTS */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin: 40px 0; }
+        .card { background: white; padding: 35px; border-radius: 20px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); border: 1px solid #eef2f6; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+        .pill { background: #e2e8f0; color: var(--primary); padding: 4px 12px; border-radius: 99px; font-size: 0.65rem; font-weight: 800; margin-bottom: 15px; display: inline-block; }
+
+        /* REVENUE CALCULATOR */
+        .calc-panel { background: var(--primary); color: white; padding: 50px; border-radius: 24px; text-align: center; margin: 40px 0; }
+        .calc-input { padding: 15px; border-radius: 12px; border: none; font-size: 1rem; margin: 5px; width: 160px; outline: none; }
+        .price-output { font-size: 4rem; font-weight: 800; color: var(--action); margin-top: 25px; }
+
+        /* FORM STYLING */
+        form { background: white; padding: 40px; border-radius: 24px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+        .input-box { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; font-size: 1rem; }
+        .btn-submit { background: var(--action); color: white; padding: 18px; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
+        .btn-submit:hover { background: #e35a28; box-shadow: 0 10px 20px rgba(255,107,53,0.3); }
+
+        footer { background: #0f172a; color: #94a3b8; padding: 80px 5% 40px; text-align: center; margin-top: 100px; border-top: 5px solid var(--action); }
+        .footer-loc { font-size: 0.85rem; margin-top: 10px; opacity: 0.7; }
+
+        @media (max-width: 768px) { .hero-title { font-size: 2.2rem; } .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand" onclick="switchTab('home')">
+            <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100" height="100" rx="20" fill="#0f172a"/>
+                <circle cx="50" cy="50" r="30" stroke="#ff6b35" stroke-width="6"/>
+                <path d="M50 35V65M35 50H65" stroke="white" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+            <div class="logo-text">Hinlu<span>.Jud Systems</span></div>
+        </div>
+        <nav class="nav-links">
+            <button class="nav-btn active" id="btn-home" onclick="switchTab('home')">Infrastructure</button>
+            <button class="nav-btn" id="btn-nation" onclick="switchTab('nation')">National Rollout</button>
+            <button class="nav-btn" id="btn-deploy" onclick="switchTab('deploy')">Deploy Hub</button>
+        </nav>
+    </header>
+
+    <section id="home" class="page-section active">
+        <h1 class="hero-title">Philippine Smart Laundry Infrastructure.</h1>
+        <p class="hero-subtitle">Solving urban congestion with IoT auditing and agile logistics across Metro Manila and Nationwide.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="pill">OWNER SECURITY</div>
+                <h3>IoT Revenue Shield</h3>
+                <p>Hardware sensors monitor machine activity to stop "sideline" unrecorded washes. Secure every watt and every peso.</p>
+            </div>
+            <div class="card">
+                <div class="pill">URBAN LOGISTICS</div>
+                <h3>Agile Deployment</h3>
+                <p>Zero-parking handoffs. Walking runners for university belts and motorized agile units for residential districts.</p>
+            </div>
+            <div class="card">
+                <div class="pill">TRUST LAYER</div>
+                <h3>Digital Custody</h3>
+                <p>Real-time bag tracking via QR-Chain tech. A transparent audit trail from the doorstep to the dryer.</p>
+            </div>
+        </div>
+
+        <div class="calc-panel">
+            <h2>Instant Hub Revenue Estimator</h2>
+            <div style="margin-top: 25px;">
+                <input type="number" id="kg" class="calc-input" placeholder="Weight (kg)">
+                <select id="svc" class="calc-input">
+                    <option value="40">Standard (₱40/kg)</option>
+                    <option value="70">Rush (₱70/kg)</option>
+                </select>
+                <button onclick="calc()" style="padding: 15px 30px; border-radius: 12px; border: none; font-weight: 800; cursor: pointer; background: white; color: var(--primary);">CALCULATE</button>
+            </div>
+            <div class="price-output" id="res">₱0.00</div>
+        </div>
+    </section>
+
+    <section id="nation" class="page-section">
+        <h1 class="hero-title">Nationwide Prototypes.</h1>
+        <p class="hero-subtitle">Operating in high-growth districts from Northern Luzon to Southern Mindanao.</p>
+        <div class="grid">
+            <div class="card">
+                <div class="pill">METRO MANILA</div>
+                <h3>Sampaloc Hub</h3>
+                <p><b>Focus:</b> Student & High-Density Valet.<br><b>Logic:</b> Walking Runners optimized for Lacson Ave and España Blvd traffic.</p>
+            </div>
+            <div class="card">
+                <div class="pill">NORTHERN MINDANAO</div>
+                <h3>Cagayan de Oro Hub</h3>
+                <p><b>Focus:</b> Rapid Residential Expansion.<br><b>Logic:</b> Motor-Agile logistics for district-wide residential coverage.</p>
+            </div>
+            <div class="card">
+                <div class="pill">CENTRAL LUZON</div>
+                <h3>Nueva Ecija Terminal</h3>
+                <p><b>Focus:</b> Cargo & Regional Hub.<br><b>Logic:</b> Centralized processing at Depot 3 for regional terminal operations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="deploy" class="page-section">
+        <h1 class="hero-title">Start Your Hub.</h1>
+        <p class="hero-subtitle">Partner with Hinlu.Jud Systems to modernize your local laundry market.</p>
+        <form name="hinlujud-onboarding" method="POST" data-netlify="true">
+            <input type="text" name="name" class="input-box" placeholder="Full Name / Business Entity" required>
+            <input type="tel" name="phone" class="input-box" placeholder="Mobile Number (09...)" required>
+            <select name="city" class="input-box">
+                <option value="manila">Metro Manila</option>
+                <option value="cdo">Cagayan de Oro</option>
+                <option value="nueva-ecija">Nueva Ecija</option>
+                <option value="expansion">Other (Nationwide Expansion)</option>
+            </select>
+            <select name="role" class="input-box">
+                <option value="shop-owner">Laundry Shop Owner</option>
+                <option value="runner">Authorized Runner</option>
+                <option value="investor">Strategic Investor</option>
+            </select>
+            <button type="submit" class="btn-submit">Initialize Deployment</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="logo-text" style="color: white; margin-bottom: 20px;">Hinlu<span>.Jud Systems</span></div>
+        <p class="footer-loc"><b>Manila HQ:</b> 534-B, A.H. Lacson Ave, Sampaloc</p>
+        <p class="footer-loc"><b>CDO Prototype:</b> Northern Mindanao Regional District</p>
+        <p class="footer-loc"><b>Regional Terminal:</b> Depot 3, Nueva Ecija</p>
+        <div style="margin-top: 40px; font-size: 0.75rem; opacity: 0.5;">
+            &copy; 2026 Hinlu.Jud Systems | Developed by Randell Mark Borja
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(id) {
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.getElementById('btn-' + id).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function calc() {
+            const w = document.getElementById('kg').value;
+            const s = document.getElementById('svc').value;
+            if(w > 0) {
+                document.getElementById('res').innerText = "₱" + (w * s).toLocaleString(undefined, {minimumFractionDigits: 2});
+            }
+        }
+    </script>
+</body>
+</html>
