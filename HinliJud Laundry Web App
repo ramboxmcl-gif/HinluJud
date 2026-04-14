@@ -1,0 +1,94 @@
+import React from "react";
+
+export default function App() {
+  return (
+    <div className="min-h-screen bg-gray-50 font-sans">
+      {/* NAVBAR */}
+      <header className="flex items-center justify-between px-6 py-4 bg-white shadow">
+        <div className="flex items-center gap-3">
+          <img
+            src="/logo.png" // place your logo in public folder
+            alt="Hinlu-Jud Logo"
+            className="h-10 w-auto"
+          />
+          <span className="font-semibold text-lg text-gray-800">
+            Hinlu-Jud
+          </span>
+        </div>
+
+        <nav className="hidden md:flex gap-6 text-gray-600">
+          <a href="#" className="hover:text-blue-600">Home</a>
+          <a href="#" className="hover:text-blue-600">Services</a>
+          <a href="#" className="hover:text-blue-600">Track Order</a>
+          <a href="#" className="hover:text-blue-600">Login</a>
+        </nav>
+      </header>
+
+      {/* HERO SECTION */}
+      <section className="flex flex-col items-center justify-center text-center px-6 py-16">
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+          Laundry, Redefined
+        </h1>
+        <p className="mt-4 text-gray-600 max-w-md">
+          On-demand laundry service connecting customers, shops, and runners.
+        </p>
+
+        <div className="mt-6 flex gap-4">
+          <button className="px-6 py-3 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700">
+            Get Started
+          </button>
+          <button className="px-6 py-3 bg-white border rounded-xl shadow hover:bg-gray-100">
+            Partner With Us
+          </button>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className="px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="bg-white p-6 rounded-2xl shadow">
+          <h3 className="font-semibold text-lg">Wash & Fold</h3>
+          <p className="text-gray-500 mt-2">Affordable everyday laundry</p>
+        </div>
+
+        <div className="bg-white p-6 rounded-2xl shadow">
+          <h3 className="font-semibold text-lg">Express</h3>
+          <p className="text-gray-500 mt-2">Fast turnaround service</p>
+        </div>
+
+        <div className="bg-white p-6 rounded-2xl shadow">
+          <h3 className="font-semibold text-lg">Dry Cleaning</h3>
+          <p className="text-gray-500 mt-2">Premium garment care</p>
+        </div>
+      </section>
+
+      {/* TRACKING PREVIEW */}
+      <section className="px-6 py-10">
+        <div className="bg-white rounded-2xl shadow p-6 max-w-xl mx-auto">
+          <h3 className="font-semibold text-lg mb-4">Track Your Order</h3>
+
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+              <span>Picked up</span>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+              <span>In Laundry</span>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
+              <span>Out for Delivery</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="bg-white border-t mt-10 px-6 py-6 text-center text-gray-500">
+        © 2026 Hinlu-Jud System. All rights reserved.
+      </footer>
+    </div>
+  );
+}
